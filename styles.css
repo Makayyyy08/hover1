@@ -1,15 +1,89 @@
-body{
-    margin:0;
-    padding:0;
+/* Reset Umum untuk Responsivitas Mobile */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #262626;
+  font-family: Arial, sans-serif;
+}
+
+/* Layar Besar (Desktop dan Laptop) */
+@media (min-width: 1024px) {
+  .data-container {
+    height: 68vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scale: 2;
   }
 
+  .data-container2 ul li a {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+}
+
+/* Layar Sedang (Tablet) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .btn {
+    font-size: 24px;
+  }
+
+  .data-container {
+    scale: 1.5;
+  }
+
+  .data-container2 ul li a {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+  }
+}
+
+/* Layar Kecil (Mobile) */
+@media (max-width: 767px) {
+  .btn {
+    font-size: 20px;
+    padding: 8px 16px;
+  }
+
+  .data-container {
+    scale: 1;
+  }
+
+  .data-container2 ul {
+    flex-direction: column;
+    position: static;
+    transform: none;
+  }
+
+  .data-container2 ul li {
+    margin: 10px 0;
+  }
+
+  .data-container2 ul li a {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
 
   .btn{
     color: rgb(219, 219, 219);
     cursor:pointer;
     position:relative;
     padding:10px 20px;
-    background:white;
+    background:#333;
     font-size:28px;
     border-top-right-radius:10px;
     border-bottom-left-radius:10px;
@@ -25,14 +99,14 @@ body{
     &:after{
       top:-1px;
       left:-1px;
-      border-top:5px solid rgb(0, 102, 255);
-      border-left:5px solid rgb(0, 102, 255);
+      border-top:5px solid #ffee10;
+      border-left:5px solid #ffee10;
     }
     &:before{
       bottom:-1px;
       right:-1px;
-      border-bottom:5px solid rgb(0, 102, 255);
-      border-right:5px solid rgb(0, 102, 255);
+      border-bottom:5px solid #ffee10;
+      border-right:5px solid #ffee10;
     }
     &:hover{
       border-top-right-radius:0px;
@@ -49,14 +123,109 @@ body{
   }
   
   .btn:hover:hover{
-    color: rgb(0, 102, 255);
+    color: #ffee10;
   } 
 
   .data-container{
-    background:#ffffff;
-    height:100vh;
+    height:68vh;
     scale:2; /*added just to get good view on preview*/
     display:flex;
     justify-content:center;
     align-items:center;
   }
+
+  /*icon seting*/
+  .data-container2{
+    align-items: center;
+    scale:2; /*added just to get good view on preview*/
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  ul li {
+    list-style: none;
+    margin: 0 15px;
+  }
+  
+  ul li a {
+    position: relative; 
+    display: block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 63px;
+    background: #333;
+    border-radius: 50%;
+    font-size: 30px;
+    color: #666;
+    transition: .5s;
+  }
+  
+  ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #ffee10;
+    transition: .5s;
+    transform: scale(.9);
+    z-index: -1;
+  }
+  
+  ul li a:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ffee10;
+  }
+  
+  ul li a:hover {
+    color: #ffee10;
+    box-shadow: 0 0 5px #ffee10;
+    text-shadow: 0 0 5px #ffee10;
+  }
+
+  /*animasi melayang*/
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px #ffee10;
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ffee10;
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px #ffee10;
+    }
+  }
+  
+  @keyframes rotateIcon {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .btn {
+    animation: pulse 2s infinite;
+  }
+  
+  /*.data-container2 ul li a:hover {
+    animation: rotateIcon 1s linear infinite;
+  }*/
+  
